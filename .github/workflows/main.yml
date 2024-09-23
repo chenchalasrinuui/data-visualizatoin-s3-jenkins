@@ -26,7 +26,7 @@ jobs:
         run: npm run build
 
       - name: Upload to S3
-        uses: jakejarvis/s3-sync-action@main
+        uses: jakejarvis/s3-sync-action@master
         env:
           SOURCE_DIR: dist/
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
