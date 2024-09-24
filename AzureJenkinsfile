@@ -2,11 +2,6 @@
 pipeline {
     agent any
 
-    tools {
-        // Install the NodeJS version defined in Jenkins global config
-        nodejs 'Node18' 
-    }
-
     environment {
         // Define environment variables, including Azure credentials
         AZURE_APP_NAME = 'MyReactApp'
