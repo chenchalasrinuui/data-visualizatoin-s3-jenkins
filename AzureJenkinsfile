@@ -19,7 +19,17 @@ pipeline {
         }
       }
     }
-  
+
+    stage('Deploy to Azure App Service') {
+      steps {
+                azureWebAppPublish azureCredentialsId: "${AZURE_CREDENTIALS_ID}", 
+                                   resourceGroup: "jenkins", 
+                                   appName: "MyReactAppJenkins", 
+                                   filePath: 'dist/', 
+                                   sourceDirectory: 'dist'
+            }
+        }
+
   }
 }
 
