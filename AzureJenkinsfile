@@ -1,42 +1,29 @@
 pipeline {
-    agent any
-    environment {
-        AZURE_CREDENTIALS_ID = 'azure-service-id'  // Use the ID you assigned in Jenkins
-    }
-    stages {
-        stage('Install Dependencies') {
-            steps {
-                // Set Node.js version (requires NodeJS plugin)
-                nodejs('nodejs-installation') {
-                    sh 'npm install'
-                }
-            }
-        }
+  agent any
 
-        stage('Build React App') {
-            steps {
-                nodejs('nodejs-installation') {
-                    sh 'npm run build'
-                }
-            }
+  stages {
+    stage('Install Dependencies') {
+      steps {
+        script {
+          bat 'npm install'
         }
+      }
+    }
 
-        stage('Deploy to Azure App Service') {
+    stage('Build') {
+      steps {
+        script {
+          bat 'npm run build'
+        }
+      }
+    }
+    stage('deploy') {
             steps {
-                azureWebAppPublish azureCredentialsId: "${AZURE_CREDENTIALS_ID}", 
-                                   resourceGroup: "jenkins", 
-                                   appName: "MyReactAppJenkins", 
-                                   filePath: 'dist/', 
-                                   sourceDirectory: 'dist'
+            #  bat "aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID"  
+             # bat "aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY"
+             # bat 'aws s3 sync dist/ s3://my-react-bucket-2 --region us-east-1'
             }
         }
-    }
-    post {
-        success {
-            echo 'Deployment successful!'
-        }
-        failure {
-            echo 'Deployment failed!'
-        }
-    }
+  }
 }
+
