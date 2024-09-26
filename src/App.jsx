@@ -85,7 +85,7 @@ const App = () => {
 
   return (
     <div>
-      <h3>{import.meta.env.VITE_SOME_KEY}</h3>
+      <h3>Hellooo...{import.meta.env.VITE_SOME_KEY}</h3>
       <LineChart width={730} height={250} data={data}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
         <CartesianGrid strokeDasharray="3 3" />
