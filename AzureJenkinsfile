@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  environment {
-        AZURE_CREDENTIALS_ID = 'azure-service-id'  // Use the ID you assigned in Jenkins
-  }
   stages {
     stage('Install Dependencies') {
       steps {
