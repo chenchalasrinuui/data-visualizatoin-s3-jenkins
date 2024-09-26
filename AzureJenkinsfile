@@ -4,12 +4,6 @@ pipeline {
         AZURE_CREDENTIALS_ID = 'azure-service-id'  // Use the ID you assigned in Jenkins
     }
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/chenchalasrinuui/data-visualizatoin-s3-jenkins'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 // Set Node.js version (requires NodeJS plugin)
