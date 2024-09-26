@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        AZURE_CREDENTIALS_ID = 'azure-service-id'  // Use the ID you assigned in Jenkins
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -27,8 +30,8 @@ pipeline {
         stage('Deploy to Azure App Service') {
             steps {
                 azureWebAppPublish azureCredentialsId: "${AZURE_CREDENTIALS_ID}", 
-                                   resourceGroup: "${RESOURCE_GROUP}", 
-                                   appName: "${AZURE_APP_NAME}", 
+                                   resourceGroup: "jenkins", 
+                                   appName: "MyReactAppJenkins", 
                                    filePath: 'dist/', 
                                    sourceDirectory: 'dist'
             }
