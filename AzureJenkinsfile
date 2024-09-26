@@ -28,7 +28,7 @@ pipeline {
                bat "rmdir /S /Q MyReactApp"
                bat "az login --service-principal -u $AZURE_SP_USER -p $AZURE_SP_PASSWORD --tenant $AZURE_TENANT_ID"
                bat "az webapp deploy --resource-group jenkins --name MyReactAppJenkins --src-path C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\azure\\MyReactApp.zip"
-               bat "rmdir /S /Q MyReactApp.zip"
+               bat "del /F /Q MyReactApp.zip"
             }
           }
         }
