@@ -24,7 +24,7 @@ pipeline {
       steps {
           script {
                bat "az login --service-principal -u $AZURE_SP_USER -p $AZURE_SP_PASSWORD --tenant $AZURE_TENANT_ID"
-               bat "az webapp deploy source config-zip --resource-group $AZURE_RESOURCE_GROUP --name $AZURE_WEBAPP_NAME --src-path dist/"
+               bat "az webapp deploy --resource-group $AZURE_RESOURCE_GROUP --name $AZURE_WEBAPP_NAME --src-path dist/"
             }
           }
         }
